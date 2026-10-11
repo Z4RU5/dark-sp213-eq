@@ -1,0 +1,23 @@
+# Dark SP-213 EQ - Bass heavy
+# https://github.com/Z4RU5/dark-sp213-eq
+#
+# Boosts the bass instead of taming it. Fuller and boomier; voices less clear.
+# Can distort at high volume - if it does, turn the speaker knob down or use Balanced.
+
+# Headroom so the boosts below don't clip. Turn the speaker knob up to make up for it.
+Preamp: -7 dB
+
+# Cut rumble the little sub can't play
+Filter: ON HPQ Fc 38 Hz Q 0.707
+
+# Bass boost
+Filter: ON PK Fc 65 Hz Gain 6 dB Q 0.9
+Filter: ON PK Fc 110 Hz Gain 2 dB Q 1.2
+
+# Remove some boominess / muddiness
+Filter: ON PK Fc 280 Hz Gain -2.5 dB Q 1.3
+Filter: ON PK Fc 550 Hz Gain -1.5 dB Q 1.5
+
+# Clarity and detail
+Filter: ON PK Fc 3200 Hz Gain 1 dB Q 1.0
+Filter: ON HSC Fc 7500 Hz Gain 4 dB

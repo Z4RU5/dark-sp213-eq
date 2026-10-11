@@ -1,0 +1,21 @@
+# Dark SP-213 EQ - Balanced (recommended)
+# https://github.com/Z4RU5/dark-sp213-eq
+#
+# The SP-213 (5W sub + 2x 3W satellites, rated 150 Hz - 20 kHz) is tuned bass-heavy at the
+# factory and has no bass knob, so it sounds boomy and muffled and voices get buried.
+# This preset: no bass boost, tame the boom, bring voices and treble forward.
+
+# Headroom so the boosts below don't clip. Turn the speaker knob up to make up for it.
+Preamp: -5 dB
+
+# Cut deep bass the sub can't play; it only wastes the little amp's power and causes distortion
+Filter: ON HPQ Fc 65 Hz Q 0.707
+
+# Tame the sub's boom and the boxy/muffled low-mids
+Filter: ON PK Fc 100 Hz Gain -2 dB Q 1.0
+Filter: ON PK Fc 150 Hz Gain -5 dB Q 1.0
+Filter: ON PK Fc 320 Hz Gain -2.5 dB Q 1.2
+
+# Bring voices and detail forward
+Filter: ON PK Fc 2500 Hz Gain 2 dB Q 1.0
+Filter: ON HSC Fc 7500 Hz Gain 4 dB

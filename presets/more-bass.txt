@@ -1,0 +1,18 @@
+# Dark SP-213 EQ - More bass
+# https://github.com/Z4RU5/dark-sp213-eq
+#
+# Like Balanced, but leaves more of the sub's bass in. Still no boom, voices still clear.
+
+# Headroom so the boosts below don't clip. Turn the speaker knob up to make up for it.
+Preamp: -5 dB
+
+# Cut deep bass the sub can't play; it only wastes the little amp's power and causes distortion
+Filter: ON HPQ Fc 55 Hz Q 0.707
+
+# Tame the sub's boom and the boxy/muffled low-mids
+Filter: ON PK Fc 150 Hz Gain -3 dB Q 1.0
+Filter: ON PK Fc 320 Hz Gain -2 dB Q 1.2
+
+# Bring voices and detail forward
+Filter: ON PK Fc 2500 Hz Gain 2 dB Q 1.0
+Filter: ON HSC Fc 7500 Hz Gain 4 dB
