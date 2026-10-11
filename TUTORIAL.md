@@ -24,12 +24,12 @@ Equalizer APO's windows are in English only.
 
 ## 4. Download this EQ
 
-1. At the top of this repo's page, click the green **Code** button > **Download ZIP**.
+1. Open the [latest release](https://github.com/Z4RU5/dark-sp213-eq/releases/latest) and download `dark-sp213-eq-v….zip` (under **Assets**).
 2. Right-click the downloaded ZIP > **Extract All**. Don't run anything from inside the ZIP.
 
 ## 5. Run the installer
 
-1. In the extracted folder, right-click `install.ps1` > **Run with PowerShell**.
+1. In the extracted folder, right-click `install.ps1` > **Run with PowerShell**. On Windows 11 you may need to click **Show more options** first.
 2. If you see a security warning, choose **Run once** (`R`). If Windows asks for admin permission, click **Yes**.
 3. Pick a preset: **1** (Balanced) is the best starting point.
 4. When it says "Done", the EQ is on. No restart needed.

@@ -14,6 +14,14 @@ function Say([string]$en, [string]$trText) { if ($tr) { $trText } else { $en } }
 function Write-Lines([string]$path, [string[]]$text) { [IO.File]::WriteAllLines($path, $text, (New-Object Text.UTF8Encoding $false)) }
 function Finish([int]$code) { Read-Host (Say 'Press Enter to close' 'Kapatmak için Enter''a basın') | Out-Null; exit $code }
 
+# Opening install.ps1 straight from the ZIP runs it without the presets folder next to it.
+if (-not (Test-Path (Join-Path $PSScriptRoot 'presets\balanced.txt'))) {
+    Write-Host (Say 'The presets folder is missing. Extract the ZIP first (right-click > Extract All), then run install.ps1 from the extracted folder.' `
+                    'presets klasörü bulunamadı. Önce ZIP''i ayıklayın (sağ tık > Tümünü ayıkla), sonra install.ps1''i ayıkladığınız klasörden çalıştırın.') -ForegroundColor Red
+    Finish 1
+}
+
+$testing = [bool]$ConfigDir
 if (-not $ConfigDir) {
     $ConfigDir = (Get-ItemProperty 'HKLM:\SOFTWARE\EqualizerAPO' -ErrorAction SilentlyContinue).ConfigPath
 }
@@ -21,6 +29,17 @@ if (-not $ConfigDir -or -not (Test-Path $ConfigDir)) {
     Write-Host (Say 'Equalizer APO is not installed. Install it first (see TUTORIAL.md), restart, then run this again.' `
                     'Equalizer APO kurulu değil. Önce onu kurun (REHBER.md''ye bakın), bilgisayarı yeniden başlatın, sonra bunu tekrar çalıştırın.') -ForegroundColor Red
     Finish 1
+}
+
+# Equalizer APO only affects outputs ticked in its Device Selector. Warn if none are.
+$apoGuid = '{EACD2258-FCAC-4FF4-B36D-419E924A6D79}'
+$hooked = @(Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Render' -ErrorAction SilentlyContinue | Where-Object {
+    $fx = Get-ItemProperty (Join-Path $_.PSPath 'FxProperties') -ErrorAction SilentlyContinue
+    $fx -and (($fx.PSObject.Properties | ForEach-Object { $_.Value }) -join ' ') -match [regex]::Escape($apoGuid)
+})
+if (-not $testing -and $hooked.Count -eq 0) {
+    Write-Host (Say 'Warning: Equalizer APO is not active on any speaker output yet. After this, open "Equalizer APO Device Selector" from the Start menu, tick your speakers, and restart.' `
+                    'Uyarı: Equalizer APO henüz hiçbir hoparlör çıkışında etkin değil. Bu işlemden sonra Başlat menüsünden "Equalizer APO Device Selector"ı açın, hoparlörünüzü işaretleyin ve bilgisayarı yeniden başlatın.') -ForegroundColor Yellow
 }
 
 # Program Files needs admin rights; ask for them only if we can't write there.

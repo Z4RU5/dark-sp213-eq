@@ -24,12 +24,12 @@ Equalizer APO'nun Türkçe arayüzü yok, pencereleri İngilizce. Bu rehberde ge
 
 ## 4. Bu ayarı indirin
 
-1. Bu sayfanın üst kısmındaki yeşil **Code** düğmesine, ardından **Download ZIP**'e tıklayın.
+1. [Son sürüm](https://github.com/Z4RU5/dark-sp213-eq/releases/latest) sayfasını açın ve **Assets** kısmındaki `dark-sp213-eq-v….zip` dosyasını indirin.
 2. İnen ZIP dosyasına sağ tıklayıp **Tümünü ayıkla** deyin. ZIP'in içinden doğrudan bir şey çalıştırmayın, önce mutlaka ayıklayın.
 
 ## 5. Kurulum dosyasını çalıştırın
 
-1. Ayıkladığınız klasörde `install.ps1` dosyasına sağ tıklayıp **PowerShell ile Çalıştır**'ı seçin.
+1. Ayıkladığınız klasörde `install.ps1` dosyasına sağ tıklayıp **PowerShell ile Çalıştır**'ı seçin. Windows 11'de önce **Daha fazla seçenek göster**'e tıklamanız gerekebilir.
 2. Güvenlik uyarısı çıkarsa **Bir kez çalıştır** (`R`) seçeneğini seçin. Windows yönetici izni isterse **Evet** deyin.
 3. Ayarı seçin: Başlangıç için en iyisi **1** (Dengeli).
 4. Ekranda "Tamam" yazısını gördüğünüzde ayar devrede demektir. Yeniden başlatmaya gerek yok.

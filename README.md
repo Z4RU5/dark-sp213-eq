@@ -11,13 +11,15 @@ This repo fixes it on Windows with the free [Equalizer APO](https://sourceforge.
 - **The top end opens up**, so you hear more detail.
 - **Less distortion when loud.** The tiny amp stops wasting power on deep bass the sub can't play anyway.
 
+![EQ curves of the three presets](docs/eq-curves.svg)
+
 Nothing on the speakers changes; it's all done on the PC. That means it only works on Windows, not when the speakers are plugged into a phone or TV.
 
 ## Quick install
 
 1. Install [Equalizer APO](https://sourceforge.net/projects/equalizerapo/). When its Device Selector opens, tick the output the speakers are plugged into, then restart the PC.
-2. On this page, click the green **Code** button > **Download ZIP**. Right-click the ZIP > **Extract All**.
-3. In the extracted folder, right-click `install.ps1` > **Run with PowerShell**, and pick a preset.
+2. Download `dark-sp213-eq-v….zip` from the [latest release](https://github.com/Z4RU5/dark-sp213-eq/releases/latest). Right-click the ZIP > **Extract All**.
+3. In the extracted folder, right-click `install.ps1` > **Run with PowerShell** (on Windows 11 it may be under **Show more options**), and pick a preset.
 
 Step by step with troubleshooting: **[TUTORIAL.md](TUTORIAL.md)**
 
@@ -30,6 +32,15 @@ Step by step with troubleshooting: **[TUTORIAL.md](TUTORIAL.md)**
 | **Bass heavy** | Boosts bass instead of taming it. Boomy, and can distort at high volume. |
 
 You can switch presets any time by running `install.ps1` again. Option 4 removes the EQ.
+
+## What does `install.ps1` do?
+
+It's a short, readable script; open it in Notepad if you want to check. It:
+
+1. Copies the preset you pick to Equalizer APO's config folder as `dark-sp213.txt`.
+2. Backs up Equalizer APO's `config.txt` once (as `config.before-dark-sp213.txt`), then makes it load `dark-sp213.txt`. A fresh Equalizer APO install comes with a demo bass boost in `config.txt`, which would otherwise stack with this EQ.
+
+That's all. It doesn't download anything, doesn't install anything, and leaves nothing running in the background. It only asks for admin rights if Equalizer APO's folder isn't writable. If you'd rather not run a script, the [manual install](TUTORIAL.md#if-the-script-wont-run-manual-install) is three steps.
 
 ## What the Balanced preset does
 

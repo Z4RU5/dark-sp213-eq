@@ -11,13 +11,15 @@ Bu proje sorunu Windows tarafında, ücretsiz [Equalizer APO](https://sourceforg
 - **Tizler açılıyor**, ses daha detaylı geliyor.
 - **Yüksek seste daha az bozuluyor.** Küçük amfi, subwoofer'ın zaten çalamadığı derin basa güç harcamayı bırakıyor.
 
+![Üç hazır ayarın ekolayzer eğrileri](docs/eq-curves.svg)
+
 Hoparlörde hiçbir şeyi değiştirmiyorsunuz, ayar tamamen bilgisayarda. Bu yüzden sadece Windows'ta işe yarar; hoparlörü telefona ya da TV'ye bağladığınızda etkisi olmaz.
 
 ## Hızlı kurulum
 
 1. [Equalizer APO](https://sourceforge.net/projects/equalizerapo/)'yu kurun. Kurulum sonunda açılan **Device Selector** penceresinde hoparlörün takılı olduğu çıkışı işaretleyin ve bilgisayarı yeniden başlatın.
-2. Bu sayfada yeşil **Code** düğmesine, ardından **Download ZIP**'e tıklayın. İnen ZIP'e sağ tıklayıp **Tümünü ayıkla** deyin.
-3. Açılan klasörde `install.ps1` dosyasına sağ tıklayıp **PowerShell ile Çalıştır**'ı seçin ve bir ayar seçin.
+2. [Son sürüm](https://github.com/Z4RU5/dark-sp213-eq/releases/latest) sayfasından `dark-sp213-eq-v….zip` dosyasını indirin. ZIP'e sağ tıklayıp **Tümünü ayıkla** deyin.
+3. Açılan klasörde `install.ps1` dosyasına sağ tıklayıp **PowerShell ile Çalıştır**'ı seçin (Windows 11'de **Daha fazla seçenek göster** altında olabilir) ve bir ayar seçin.
 
 Adım adım anlatım ve sorun giderme için: **[REHBER.md](REHBER.md)**
 
@@ -30,6 +32,15 @@ Adım adım anlatım ve sorun giderme için: **[REHBER.md](REHBER.md)**
 | **Bol bas** | Bası törpülemek yerine artırır. Gümbür gümbür ama yüksek seste bozulabilir. |
 
 Ayarı istediğiniz zaman değiştirebilirsiniz: `install.ps1`'i tekrar çalıştırmanız yeterli. 4 numaralı seçenek ayarı tamamen kaldırır.
+
+## `install.ps1` ne yapıyor?
+
+Kısa ve okunabilir bir betik; içini merak ederseniz Not Defteri ile açıp bakabilirsiniz. Yaptığı şey şu:
+
+1. Seçtiğiniz ayarı Equalizer APO'nun ayar klasörüne `dark-sp213.txt` adıyla kopyalıyor.
+2. Equalizer APO'nun `config.txt` dosyasının bir kez yedeğini alıyor (`config.before-dark-sp213.txt`), sonra onu `dark-sp213.txt`'yi kullanacak şekilde düzenliyor. Equalizer APO ilk kurulduğunda `config.txt` içinde örnek bir bas yükseltmesi geliyor; silinmezse bu ayarın üstüne binip uğultuyu geri getirirdi.
+
+Bu kadar. İnternetten bir şey indirmiyor, bir şey kurmuyor, arka planda çalışan bir şey bırakmıyor. Yönetici iznini sadece Equalizer APO'nun klasörüne yazamazsa istiyor. Betik çalıştırmak istemezseniz [elle kurulum](REHBER.md#kurulum-dosyası-çalışmazsa-elle-kurulum) üç adımda bitiyor.
 
 ## Dengeli ayar ne yapıyor?
 
